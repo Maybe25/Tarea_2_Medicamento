@@ -1,6 +1,5 @@
 # DAWII-Sesion01Inicio
-### Servicio Rest - Inicial
+### Servicio Rest - Medicamento - Alumno
 
-## Autor ✒️
 
-* **Jorge Jacinto ** - [jorgejacinto9701](https://github.com/jorgejacinto9701)
+* **Ramirez Fernandez** -
