@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.empresa.entity.Alumno;
 import com.empresa.entity.Medicamento;
 import com.empresa.service.MedicamentoService;
 
@@ -65,7 +65,7 @@ public class MedicamentoController {
 	}
 
 	//Metodo obtener por ID
-	@GetMapping("/porId/{id}")
+	@GetMapping("/id/{id}")
 	@ResponseBody
 	public ResponseEntity<Medicamento> listaPorId(@PathVariable("id") int idMedicamento) {
 		Optional<Medicamento> optMedicamento = service.obtienePorId(idMedicamento);
@@ -76,6 +76,30 @@ public class MedicamentoController {
 		}
 	
 	}
+	
+	//Metodo obtener por Nombre containing
+	@GetMapping("nombre/{prefix}")
+	@ResponseBody
+	public ResponseEntity<List<Medicamento>> medicamentoPorNombre(@PathVariable("prefix")String nombre){
+		if(!nombre.isEmpty()) {
+			return  ResponseEntity.ok(service.obtienePorNombreLike(nombre));
+		}
+		return ResponseEntity.notFound().build();
+		
+	}
+	
+	//Metodo obtener por stock mayor que //
+	
+	@GetMapping("/stock/{stock}")
+	@ResponseBody
+	public ResponseEntity<List<Medicamento>> medicamentoPorStockMayorQue(@PathVariable("stock")int stockMedicamento){
+		Optional<Integer> optStock = Optional.of(stockMedicamento);
+		if(!optStock.isEmpty()) {
+			return ResponseEntity.ok(service.obtieneStockMayorQue(stockMedicamento));
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
 	
 
 }

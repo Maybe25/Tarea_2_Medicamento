@@ -14,5 +14,9 @@ public interface MedicamentoService {
 	void eliminarMedicamento(int idMedicamento);
 	
 	public Optional<Medicamento> obtienePorId(int idMedicamento);
+	
+	public List<Medicamento> obtienePorNombreLike(String prefix);
+	
+	public List<Medicamento> obtieneStockMayorQue(int stock);
 
 }
